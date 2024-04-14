@@ -7,6 +7,7 @@ import styles from './formStyles.js'
 import { createPost, updatePost } from '../../actions/posts.js'
 
 export default function Form({ currentId, setCurrentId }) {
+  const classes = styles();
   const [postData, setPostData] = useState({
     creator: '', title: '', message: '', tags: '', selectedFile: '' 
   })
@@ -37,24 +38,25 @@ export default function Form({ currentId, setCurrentId }) {
   };
 
   return (
-    <Paper sx={styles.paper}>
-      <form autoComplete='off' noValidate sx={`${styles.root} ${styles.form}`} onSubmit={handleSubmit}>
+    // <Paper sx={styles.paper}>
+    <Paper className={classes.paper}>
+      <form autoComplete='off' noValidate className={`${classes.root} ${classes.form}`} onSubmit={handleSubmit}>
       <Typography variant="h6">{currentId ? `Editing "${post.title}"` : 'Creating a Memory'}</Typography>
         <TextField name='creator' label='Creator' variant='outlined' fullWidth value={postData.creator} onChange={(e) => setPostData({ ...postData, creator: e.target.value })}/>
         <TextField name='title' label='Title' variant='outlined' fullWidth value={postData.title} onChange={(e) => setPostData({ ...postData, title: e.target.value })}/>
         <TextField name='message' label='Message' variant='outlined' fullWidth multiline rows={4} value={postData.message} onChange={(e) => setPostData({ ...postData, message: e.target.value })}/>
         <TextField name='tags' label="Tags (coma separated)" variant='outlined' fullWidth value={postData.tags} onChange={(e) => setPostData({ ...postData, tags: e.target.value.split(',') })}/>
-        <div sx={styles.fileInput}>
+        <div className={classes.fileInput}>
           <FileBase64 
             type='file'
             multiple={false}
             onDone={({ base64 }) => setPostData({...postData, selectedFile: base64 })}
           />
         </div>
-        <Button variant='contained' sx={styles.submitButton} color='primary' size='large' type='submit' fullWidth>
+        <Button variant='contained' className={classes.buttonSubmit} color='primary' size='large' type='submit' fullWidth>
           Submit
         </Button>
-        <Button variant='contained' color='secondary' size='small' onClick={clear} fullWidth>
+        <Button variant='contained' color='secondary' size='large'className={classes.buttonSubmit} onClick={clear} fullWidth>
           Clear
         </Button>
       </form>
