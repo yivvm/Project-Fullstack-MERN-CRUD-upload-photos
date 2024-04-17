@@ -12,7 +12,7 @@ The backend communicates with the MongoDB database to store and retrieve photos 
 - [Contributing](#contributing)
 - [License](#license)
 
-![]()
+![view](./screenshots/view.png)
 
 ## Features
 
@@ -71,6 +71,9 @@ The backend communicates with the MongoDB database to store and retrieve photos 
      - Update: Edit the details or replace existing photos.
      - Delete: Remove unwanted photos from your gallery.
      - Like: Like the photos.
+
+![edit](./screenshots/edit.png)
+![delete](./screenshots/delete.png)
 
 ## Deployment
 
